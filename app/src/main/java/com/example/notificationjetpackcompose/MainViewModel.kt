@@ -18,4 +18,11 @@ class MainViewModel @Inject constructor(
     fun showSimpleNotification(){
         notificationManager.notify(1,notificationBuilder.build())
     }
+    @SuppressLint("MissingPermission")
+    fun updateSimpleNotification(){
+        notificationManager.notify(1,notificationBuilder.setContentTitle("NEW TITLE").build())
+    }
+    fun cancelSimpleNotification(){
+        notificationManager.cancel(1)
+    }
 }

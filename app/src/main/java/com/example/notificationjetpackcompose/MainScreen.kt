@@ -23,10 +23,14 @@ fun MainScreen(mainViewModel: MainViewModel = hiltViewModel()) {
         }) {
             Text(text = "Simple Notification")
         }
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+            mainViewModel.updateSimpleNotification()
+        }) {
             Text(text = "Update Notification")
         }
-        Button(onClick = { /*TODO*/ }) {
+        Button(onClick = {
+            mainViewModel.cancelSimpleNotification()
+        }) {
             Text(text = "Cancel Notification")
         }
     }

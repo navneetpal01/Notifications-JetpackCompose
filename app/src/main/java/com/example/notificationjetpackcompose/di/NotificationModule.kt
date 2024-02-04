@@ -1,6 +1,8 @@
 package com.example.notificationjetpackcompose.di
 
+import android.annotation.SuppressLint
 import android.app.Application
+import android.app.Notification.VISIBILITY_PUBLIC
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.os.Build
@@ -17,6 +19,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object NotificationModule {
 
+    @SuppressLint("WrongConstant")
     @Singleton
     @Provides
     fun provideNotificationBuilder(
@@ -30,6 +33,19 @@ object NotificationModule {
             .setSmallIcon(R.drawable.notification)
             //For api level lower than 26
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            //How much content want to show on the lock Screen
+            .setVisibility(VISIBILITY_PUBLIC)
+            //Just for the Private Notification
+        /*
+            .setVisibility(VISIBILITY_PRIVATE)
+            .setPublicVersion(
+                 NotificationCompact.Builder(application,"Main Channel ID")
+                        .setContentTitle("Hidden")
+                        .setContentText("Unlock")
+                        .build()
+            )
+         */
+
     }
 
     @Singleton
