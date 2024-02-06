@@ -5,10 +5,13 @@ import android.app.Application
 import android.app.Notification.VISIBILITY_PUBLIC
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.notificationjetpackcompose.R
+import com.example.notificationjetpackcompose.receiver.MyReceiver
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,6 +28,16 @@ object NotificationModule {
     fun provideNotificationBuilder(
         application: Application
     ) : NotificationCompat.Builder {
+        val intent = Intent(application,MyReceiver::class.java).apply {
+            putExtra("MESSAGE","Clicked")
+        }
+        val pendingIntent = PendingIntent.getBroadcast(
+            application,
+            0,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
         return NotificationCompat.Builder(
             application,"Main Channel ID"
         )
@@ -45,6 +58,7 @@ object NotificationModule {
                         .build()
             )
          */
+            .addAction(0,"Action",pendingIntent)
 
     }
 
