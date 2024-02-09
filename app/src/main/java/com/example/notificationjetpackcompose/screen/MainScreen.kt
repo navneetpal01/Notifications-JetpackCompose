@@ -52,7 +52,7 @@ fun MainScreen(
                 )
             )
         }) {
-            Text(text = "")
+            Text(text = "Go To Next Page")
         }
     }
 }

@@ -54,9 +54,9 @@ object NotificationModule {
             application,
             MainActivity::class.java
         )
-        val clickPendingIntent : PendingIntent = TaskStackBuilder.create(application).run {
+        val clickPendingIntent: PendingIntent = TaskStackBuilder.create(application).run {
             addNextIntentWithParentStack(clickIntent)
-            getPendingIntent(1,flag)
+            getPendingIntent(1, flag)
         }
 
 

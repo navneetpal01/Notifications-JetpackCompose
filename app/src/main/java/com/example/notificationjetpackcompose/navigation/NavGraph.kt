@@ -17,20 +17,19 @@ const val MY_ARG = "message"
 @Composable
 fun SetupNavGraph(
     navController: NavHostController
-){
-    NavHost(navController = navController, startDestination = Screen.Main.route){
-        composable(route = Screen.Main.route){
+) {
+    NavHost(navController = navController, startDestination = Screen.Main.route) {
+        composable(route = Screen.Main.route) {
             MainScreen(navController = navController)
         }
         composable(
             route = Screen.Details.route,
-            arguments = listOf(navArgument(MY_ARG){type = NavType.StringType}),
-            deepLinks = listOf(navDeepLink { uriPattern = "$MY_URI/$MY_ARG = {$MY_ARG}" })
-        ){
+            arguments = listOf(navArgument(MY_ARG) { type = NavType.StringType }),
+            deepLinks = listOf(navDeepLink { uriPattern = "$MY_URI/$MY_ARG={$MY_ARG}" })
+        ) {
             val arguments = it.arguments
-            arguments?.getString(MY_ARG)?.let {message ->
+            arguments?.getString(MY_ARG)?.let { message ->
                 DetailScreen(message = message)
-
             }
         }
     }
